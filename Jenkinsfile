@@ -1,18 +1,10 @@
-node {
-        stage('Build') {
+pipeline {
+    agent { docker { image 'node:6.3' } }
+    stages {
+        stage('build') {
             steps {
-                echo 'Building..'
+                sh 'npm --version'
             }
         }
-        stage('Test') {
-            steps {
-                echo 'Testing..'
-            }
-        }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying....'
-            }
-        }
-    
+    }
 }
