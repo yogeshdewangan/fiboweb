@@ -1,13 +1,21 @@
-node{
-    stage('Git Checkout'){
-        git credentialsId: 'github-credentials', url: 'https://github.com/yogeshdewangan/fiboweb'
-    }
-	
-	stage('Build images'){
-		client = docker.build("yogeshdewangan97/client")
-		server = docker.build("yogeshdewangan97/server")
-		worker = docker.build("yogeshdewangan/workder")
-		
-	}
-}
+pipeline {
+    agent any
 
+    stages {
+        stage('Build') {
+            steps {
+                echo 'Building..'
+            }
+        }
+        stage('Test') {
+            steps {
+                echo 'Testing..'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying....'
+            }
+        }
+    }
+}
